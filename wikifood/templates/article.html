@@ -1,0 +1,430 @@
+{% extends "template.html" %}
+
+{% block article %}
+
+    {% if not getArticle[0]['status'] %}
+        <div class="article">
+            {% if articleType == 'R' %}
+                {% if getArticle[0]['image'] %}
+                    <div class="flex-vertical general-info">
+                        <div class="stamp-container flex-vertical">
+                            {% if getArticle[0]['veryHealthy'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/healthy.svg">
+                                    </div>
+                                    <div>
+                                        <p>Healthy</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if getArticle[0]['cheap'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/cheap.svg">
+                                    </div>
+                                    <div>
+                                        <p>Cheap</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if getArticle[0]['veryPopular'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/popular.svg">
+                                    </div>
+                                    <div>
+                                        <p>Popular</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if getArticle[0]['sustainable'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/sustainable.svg">
+                                    </div>
+                                    <div>
+                                        <p>Sustainable</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% for diet in getArticle[0]['diets'] %}
+                                {% set dietName = diet %}
+                                {% set diet = diet.replace(' ', '-') %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/{{ diet }}.svg">
+                                    </div>
+                                    <div>
+                                        <p>{{ dietName.title() }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="sub-general-info w100">
+                            <!-- Image, copy, desc -->
+                            <div class="w100 image-copy">
+                                <div class="flex-vertical article-title-container">
+                                    <h1>{{ getArticle[0]['title'] }}</h1>
+                                    {% if getArticle[1] %}
+                                        <div>
+                                            <form class="mobile-save-article-form" method="post">
+                                                <button class="submit-article-form" type="submit" name="savedArticle" value="True">
+                                                    <img class="save-article" src="../static/svgs/article/saved-article.svg">
+                                                </button>
+                                            </form>
+                                        </div>
+                                    {% else %}
+                                        <div>
+                                            <form class="mobile-save-article-form" method="post">
+                                                <button class="submit-article-form" type="submit" name="savedArticle" value="False">
+                                                    <img class="save-article" src="../static/svgs/article/save-article.svg">
+                                                </button>
+                                            </form>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <img src="{{ getArticle[0]['image'] }}" class="w100">
+                                <div class="save-article-container">
+                                    {% if getArticle[0]['creditsText'] %}
+                                        <p class="copy">Image &copy<a href="{{ getArticle[0]['sourceUrl'] }}">{{ getArticle[0]['creditsText'] }}</a></p>
+                                    {% endif %}
+                                    {% if getArticle[1] %}
+                                        <form class="save-article-form" method="post">
+                                            <button class="submit-article-form" type="submit" name="savedArticle" value="True">
+                                                <img class="save-article" src="../static/svgs/article/saved-article.svg">
+                                            </button>
+                                        </form>
+                                    {% else %}
+                                        <form class="save-article-form" method="post">
+                                            <button class="submit-article-form" type="submit" name="savedArticle" value="False">
+                                                <img class="save-article" src="../static/svgs/article/save-article.svg">
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                                <div class="description-container">
+                                    <hr>
+                                    <div class="description">
+                                        <h1>Description</h1>
+                                        <p>{{ getArticle[0]['summary']|safe }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Characteristics -->
+                            <div class="characteristics">
+                                <h1>{{ getArticle[0]['title'] }}</h1>
+                                <div class="flex-vertical desk-flex-row primary-info">
+                                    <div class="stamp" style="background-color: rgb(224, 64, 64) !important;">
+                                        <img src="../static/svgs/article/like.svg">
+                                    </div>
+                                    <div>
+                                        {% if getArticle[0]['aggregateLikes'] == 1 %}
+                                            <p>{{ getArticle[0]['aggregateLikes'] }} like</p>
+                                        {% else %}
+                                            <p>{{ getArticle[0]['aggregateLikes'] }} likes</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="flex-vertical desk-flex-row primary-info">
+                                    <div class="stamp" style="background-color: rgb(224, 64, 224) !important;">
+                                        <img src="../static/svgs/article/health-score.svg">
+                                    </div>
+                                    <div>
+                                        <p>Health score: {{ '%.0f'|format(getArticle[0]['healthScore']) }}%</p>
+                                    </div>
+                                </div>
+                                <div class="flex-vertical desk-flex-row primary-info">
+                                    <div class="stamp" style="background-color: rgb(64, 224, 64) !important;">
+                                        <img src="../static/svgs/article/ready-in.svg">
+                                    </div>
+                                    <div>
+                                        <p>Ready in: {{ getArticle[0]['readyInMinutes'] }}'</p>
+                                    </div>
+                                </div>
+                                <div class="flex-vertical desk-flex-row primary-info">
+                                    <div class="stamp" style="background-color: rgb(232, 232, 72) !important;">
+                                        <img src="../static/svgs/article/price.svg">
+                                    </div>
+                                    <div>
+                                        <p>Price per serving: ${{ '%.2f'|format(getArticle[0]['pricePerServing'] / 100) }}</p>
+                                    </div>
+                                </div>
+                                <div class="flex-vertical desk-flex-row primary-info">
+                                    <div>
+                                        <img src="../static/svgs/article/general-score.svg">
+                                    </div>
+                                    <div>
+                                        <p>General score: {{ '%.0f'|format(getArticle[0]['spoonacularScore']) }}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-vertical desk-flex-row step-and-wine">
+                        {% if getArticle[0]['analyzedInstructions'] %}
+                            <!-- Step-By-Step -->
+                            <div class="step">
+                                <h1>Step-By-Step</h1>
+                                {% for i in getArticle[0]['analyzedInstructions'] %}
+                                    {% for step in i['steps'] %}
+                                        <div class="flex-vertical flex-row w100 step-by-step-container">
+                                            <div class="flex-vertical step-number-container">
+                                                <div class="step-number">
+                                                    <h3>{{ step['number'] }}</h3>
+                                                    <div class="step-progress"></div>
+                                                </div>
+                                            </div>
+                                            <div class="flex-vertical step-description-container">
+                                                <p>{{ step['step'] }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if getArticle[0]['winePairing']['productMatches'] and getArticle[0]['winePairing']['pairingText'] %}
+                            <!-- Wine -->
+                            <div class="bgc-wine description">
+                                {% for i in getArticle[0]['winePairing']['productMatches'] %}
+                                    <div class="flex-vertical">
+                                        <h1>{{ i['title'] }}</h1>
+                                        <img src="{{ i['imageUrl'] }}">
+                                        <div class="flex-vertical flex-row w100 buy-container">
+                                            <div class="btn btn-price">
+                                                <h2>{{ i['price'] }}</h2>
+                                            </div>
+                                            <div>
+                                                <h2>|</h2>
+                                            </div>
+                                            <a href="{{ i['link'] }}" class="btn btn-wine">
+                                                <div>Buy Now</div>
+                                            </a>
+                                        </div>
+                                        <p>{{ i['description'] }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+<!-- ##################################################################################################################################################################################################################################### -->
+
+            {% elif getArticle[0] == 'P' %}
+                {% if getArticle[0]['image'] %}
+                    <div class="flex-vertical general-info">
+                        <div class="stamp-container flex-vertical">
+                            {% if getArticle[0]['veryHealthy'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/healthy.svg">
+                                    </div>
+                                    <div>
+                                        <p>Healthy</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if getArticle[0]['cheap'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/cheap.svg">
+                                    </div>
+                                    <div>
+                                        <p>Cheap</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if getArticle[0]['veryPopular'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/popular.svg">
+                                    </div>
+                                    <div>
+                                        <p>Popular</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if getArticle[0]['sustainable'] %}
+                                <div class="flex-vertical">
+                                    <div class="stamp">
+                                        <img src="../static/svgs/stamps/sustainable.svg">
+                                    </div>
+                                    <div>
+                                        <p>Sustainable</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="sub-general-info w100">
+                            <!-- Image, copy, desc -->
+                            <div class="w100 image-copy">
+                                <h1>{{ getArticle[0]['title'] }}</h1>
+                                <img src="{{ getArticle[0]['image'] }}" class="w100">
+                                {% if getArticle[0]['creditsText'] %}
+                                    <p class="copy">Image &copy <a href="{{ getArticle[0]['sourceUrl'] }}">{{ getArticle[0]['creditsText'] }}</a></p>
+                                {% endif %}
+                                {% if getArticle[1] %}
+                                    <button class="submit-article-form" type="submit" name="savedArticle" value="True">
+                                        <img class="save-article" src="../static/svgs/article/saved-article.svg">
+                                    </button>
+                                {% else %}
+                                    <button class="submit-article-form" type="submit" name="savedArticle" value="False">
+                                        <img class="save-article" src="../static/svgs/article/save-article.svg">
+                                    </button>
+                                {% endif %}
+                                <div class="description-container">
+                                    <hr>
+                                    <div class="description">
+                                        <h1>Description</h1>
+                                        <p>{{ getArticle[0]['description']|safe }}</p>
+                                    </div>
+                                </div>
+                                <div class="description-container">
+                                    <hr>
+                                    <div class="description ingredients">
+                                        <h1>Ingredients: {{ getArticle[0]['ingredientCount'] }}</h1>
+                                        <p>{{ getArticle[0]['ingredientList'] }}</p>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+
+                            <!-- Characteristics -->
+                            <div class="characteristics">
+                                <div>
+                                    <h1>{{ getArticle[0]['title'] }}</h1>
+                                    <div class="flex-vertical desk-flex-row primary-info">
+                                        <div clas="stamp" style="background-color: rgb(224, 64, 64) !important;">
+                                            <img src="../static/svgs/article/like.svg">
+                                        </div>
+                                        <div>
+                                            {% if getArticle[0]['likes'] == 1 %}
+                                                <p>{{ '%.0f'|format(getArticle[0]['likes']) }} like</p>
+                                            {% else %}
+                                                <p>{{ '%.0f'|format(getArticle[0]['likes']) }} likes</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="flex-vertical desk-flex-row primary-info">
+                                        <div clas="stamp" style="background-color: rgb(232, 232, 72) !important;">
+                                            <img src="../static/svgs/article/price.svg">
+                                        </div>
+                                        <div>
+                                            <p>Price per serving: ${{ '%.2f'|format(getArticle[0]['price'] / 100) }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-vertical desk-flex-row primary-info">
+                                        <div>
+                                            <img src="../static/svgs/article/general-score.svg">
+                                        </div>
+                                        <div>
+                                            <p>General score: {{ getArticle[0]['spoonacularScore'] }}%</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <hr>
+
+                                    <div class="badges">
+                                        <h2>This product should be:</h2>
+                                        {% for stamp in getArticle[0]['importantBadges'] %}
+                                            {% set stampName = stamp.replace('_', ' ') %}
+                                            {% set stamp = stamp.replace('_', '-') %}
+                                            <div class="flex-vertical">
+                                                <div class="stamp">
+                                                    <img src="../static/svgs/stamps/{{ diet }}.svg">
+                                                </div>
+                                                <div>
+                                                    <p>{{ stampName.title() }}</p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                {% endif %}
+
+<!-- ##################################################################################################################################################################################################################################### -->
+
+            {% else %}
+                {% if getArticle[0]['images'][0] %}
+                    <div class="flex-vertical general-info">
+                        <div class="sub-general-info w100">
+                            <!-- Image, copy, desc -->
+                            <div class="w100 image-copy">
+                                {% if getArticle[0]['title'] %}
+                                    <h1>{{ getArticle[0]['title'] }}</h1>
+                                {% endif %}
+                                <img src="{{ getArticle[0]['images'][0] }}" class="w100">
+                                <form class="save-article-form" method="post">
+                                    {% if getArticle[1] %}
+                                        <button class="submit-article-form" type="submit" name="savedArticle" value="True">
+                                            <img class="save-article" src="../static/svgs/article/saved-article.svg">
+                                        </button>
+                                    {% else %}
+                                        <button class="submit-article-form" type="submit" name="savedArticle" value="False">
+                                            <img class="save-article" src="../static/svgs/article/save-article.svg">
+                                        </button>
+                                    {% endif %}
+                                </form>
+                                {% if getArticle[0]['generatedText'] %}
+                                    <div class="description-container">
+                                        <hr>
+                                        <div class="description">
+                                            <h1>Description</h1>
+                                            <p>{{ getArticle[0]['generatedText'] }}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Characteristics -->
+                            <div class="characteristics">
+                                {% if getArticle[0]['title'] %}
+                                    <h1>{{ getArticle[0]['title'] }}</h1>
+                                {% endif %}
+                                {% if getArticle[0]['price'] %}
+                                    <div class="flex-vertical desk-flex-row primary-info">
+                                        <div class="stamp" style="background-color: rgb(232, 232, 72) !important;">
+                                            <img src="../static/svgs/article/price.svg">
+                                        </div>
+                                        <div>
+                                            <p>Price per serving: ${{ '%.2f'|format(getArticle[0]['price'] / 100) }}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if getArticle[0]['spoonacularScore'] %}
+                                    <div class="flex-vertical desk-flex-row primary-info">
+                                        <div>
+                                            <img src="../static/svgs/article/general-score.svg">
+                                        </div>
+                                        <div>
+                                            <p>General score: {{ '%.0f'|format(getArticle[0]['spoonacularScore']) }}%</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <h1>Error 400.</h1>
+                    <h3>The article with id: {{ getArticle[0]['id'] }} has not been found.</h3>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% else %}
+        <h1>Error 400.</h1>
+        <h3>{{ getArticle[0]['message'] }}</h3>
+    {% endif %}
+
+{% endblock %}

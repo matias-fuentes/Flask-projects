@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./static/styles/normalize.css">
+    <link rel="stylesheet" href="./static/styles/globals.css">
+    <link rel="stylesheet" href="./static/styles/template.css">
+    <link rel="stylesheet" href="./static/styles/index.css">
+    <link rel="stylesheet" href="./static/styles/auth.css">
+    <link rel="stylesheet" href="./static/styles/profile.css">
+    <link rel="stylesheet" href="./static/styles/search.css">
+    <link rel="stylesheet" href="./static/styles/article.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="./static/svgs/index/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <title>WikiFood</title>
+</head>
+
+<body>
+    <header>
+        <a class="logo-container" href="/">
+            <img class="logo" src="./static/svgs/index/logo.svg" alt="Logo">
+            <h2 class="black-logo-title marg-0">WikiFood</h2>
+        </a>
+        <form method="post" class="form-container">
+            <div class="search-bar-container">
+                <input name="search" class="search-bar" type="text" placeholder="Search">
+                <input class="search" type="image" src="./static/svgs/index/search.svg">
+            </div>
+        </form>
+        {% if logIn %}
+            <a class="profile ds-none-mobile" href="/profile">
+                <img class="profile-img" src="./static/svgs/index/profile.svg">
+                <h3 class="low-marg">{{ username }}</h3>
+            </a>
+            <a href="/logout" class="low-width flex-vertical btn">Log Out</a>
+        {% else %}
+            <a href="/login" class="btn">Log In</a>
+            <a href="/register" class="btn btn-primary">Sign Up</a>
+        {% endif %}
+    </header>
+
+    {% if index %}
+        <main class="limit-page-0 invert">
+            {% block index %} {% endblock %}
+        </main>
+    {% else %}
+        <main>
+            {% block register %} {% endblock %}
+            {% block login %} {% endblock %}
+            {% block profile %} {% endblock %}
+            {% block search %} {% endblock %}
+            {% block article %} {% endblock %}
+        </main>
+    {% endif %}
+
+    <footer class="flex-vertical">
+        <p>Data provided for free by <a href="https://spoonacular.com/">Spoonacular</a>. View <a href="https://spoonacular.com/food-api/terms">Spoonacular's Terms of Use</a>.</p>
+    </footer>
+</body>
+
+</html>

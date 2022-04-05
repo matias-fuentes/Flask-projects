@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+
+                <form method="post">
+                    <div class="name-and-error-container">
+                        <div id="name-container">
+                            <input name="name" type="text" minlength="2" maxlength="64" placeholder="Name" required>
+                        </div>
+                        <div>
+                            <p id="error">Name must be at least 2 characters</p>
+                        </div>
+                    </div>
+                    <select name="months" required>
+                        <option disabled selected>-- Select a month --</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select name="days" required>
+                        <option disabled selected>-- Select a day --</option>
+                        {% for i in range(31) %}
+                            <option value="{{ i }}">{{ i + 1 }}</option>
+                        {% endfor %}
+                    <input type="submit" value="Add Birthday">
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                        {% for person in birthdays %}
+                            <tr>
+                                <td>{{ person.name }}</td>
+                                <td>{{ person.month }}/{{ person.day }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+
+    <script src="./static/input-conditionals.js"></script>
+</html>
