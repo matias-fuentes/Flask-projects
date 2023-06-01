@@ -1,0 +1,6 @@
+/api/__pycache__
+/api/.mypy_cache
+/env
+.env
+.vercel
+__pycache__

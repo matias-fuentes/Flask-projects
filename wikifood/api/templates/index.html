@@ -1,0 +1,160 @@
+{% extends "template.html" %}
+
+{% block index %}
+    <div class="web-presentation">
+        <div class="introduction-container flex-vertical">
+            <h1 class="marg-0">WikiFood</h1>
+            <p>All about your favourite foods, in just one place</p>
+            {% if loginId %}
+                <a href="/profile">
+                    <img src="./static/svgs/index/profile-white.svg">
+                </a>
+            {% else %}
+                <div class="join-container">
+                    <a href="/login" class="btn">Log In</a>
+                    <a href="/signup" class="btn btn-primary">Sign Up</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="go-down-container flex-vertical">
+            <img src="./static/svgs/index/arrow-down.svg" alt="Arrow down">
+            <img src="./static/svgs/index/arrow-down.svg" alt="Arrow down">
+        </div>
+
+    </div>
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-banner ingredients-bg">
+                <div class="icon-circle">
+                    <img src="./static/svgs/index/ingredients.svg" alt="Ingredients icon">
+                </div>
+            </div>
+            <h1>Ingredients</h1>
+            <h2 class="marg-top-0">2,600+</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nutrition data</td>
+                    </tr>
+                    <tr>
+                        <td>Price data</td>
+                    </tr>
+                    <tr>
+                        <td>Cooking tips</td>
+                    </tr>
+                    <tr>
+                        <td>Health information</td>
+                    </tr>
+                    <tr>
+                        <td>Substitutions</td>
+                    </tr>
+                    <tr>
+                        <td>Conversions</td>
+                    </tr>
+                    <tr>
+                        <td>Mapping to products</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-banner recipes-bg">
+                <div class="icon-circle">
+                    <img src="./static/svgs/index/recipes.svg" alt="Recipes icon">
+                </div>
+            </div>
+            <h1>Recipes</h1>
+            <h2 class="marg-top-0">5,000+</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Nutrition analysis</td>
+                    </tr>
+                    <tr>
+                        <td>Cost breakdown</td>
+                    </tr>
+                    <tr>
+                        <td>Cooking tips</td>
+                    </tr>
+                    <tr>
+                        <td>Related recipes</td>
+                    </tr>
+                    <tr>
+                        <td>Scaling/converting</td>
+                    </tr>
+                    <tr>
+                        <td>Semantic search</td>
+                    </tr>
+                    <tr>
+                        <td>Wine pairings</td>
+                    </tr>
+                    <tr>
+                        <td>Shoppable content</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-banner products-bg">
+                <div class="icon-circle">
+                    <img src="./static/svgs/index/products.svg" alt="Products icon">
+                </div>
+            </div>
+            <h1>Products</h1>
+            <h2 class="marg-top-0">90k+</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Ingredient analysis</td>
+                    </tr>
+                    <tr>
+                        <td>Nutrition data</td>
+                    </tr>
+                    <tr>
+                        <td>Nutrition visualization</td>
+                    </tr>
+                    <tr>
+                        <td>Descriptions</td>
+                    </tr>
+                    <tr>
+                        <td>Product comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Product search</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="card-banner menu-items-bg">
+                <div class="icon-circle">
+                    <img src="./static/svgs/index/menu-items.svg" alt="Menu Items icon">
+                </div>
+            </div>
+            <h1>Menu Items</h1>
+            <h2 class="marg-top-0">115k+</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>800+ American restaurant chains</td>
+                    </tr>
+                    <tr>
+                        <td>Nutrition data</td>
+                    </tr>
+                    <tr>
+                        <td>Nutrition visualization</td>
+                    </tr>
+                    <tr>
+                        <td>Images</td>
+                    </tr>
+                    <tr>
+                        <td>Descriptions</td>
+                    </tr>
+                    <tr>
+                        <td>Menu search</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

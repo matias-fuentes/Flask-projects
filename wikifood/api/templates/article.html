@@ -1,0 +1,208 @@
+{% extends "template.html" %}
+
+{% block article %}
+    {% if not article['status'] %}
+        <div class="article">
+            {% if article['image'] %}
+                <div class="flex-vertical general-info">
+                    {% if successfulMessage %}
+                        <div class="successfulMessage__container">
+                            <div class="successfulMessage">
+                                <h3>{{ successfulMessage }}</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="stamp-container flex-vertical">
+                        {% if article['veryHealthy'] %}
+                            <div class="flex-vertical">
+                                <div class="stamp">
+                                    <img src="../static/svgs/stamps/healthy.svg" />
+                                </div>
+                                <div>
+                                    <p>Healthy</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if article['cheap'] %}
+                            <div class="flex-vertical">
+                                <div class="stamp">
+                                    <img src="../static/svgs/stamps/cheap.svg" />
+                                </div>
+                                <div>
+                                    <p>Cheap</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if article['veryPopular'] %}
+                            <div class="flex-vertical">
+                                <div class="stamp">
+                                    <img src="../static/svgs/stamps/popular.svg" />
+                                </div>
+                                <div>
+                                    <p>Popular</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if article['sustainable'] %}
+                            <div class="flex-vertical">
+                                <div class="stamp">
+                                    <img src="../static/svgs/stamps/sustainable.svg" />
+                                </div>
+                                <div>
+                                    <p>Sustainable</p>
+                                </div>
+                            </div>
+                        {% endif %} 
+                        {% for diet in article['diets'] %}
+                            {% set dietName = diet %}
+                            {% set diet = diet.replace(' ', '-') %}
+                            <div class="flex-vertical">
+                                <div class="stamp">
+                                    <img src="../static/svgs/stamps/{{ diet }}.svg" />
+                                </div>
+                                <div>
+                                    <p>{{ dietName.title() }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="sub-general-info w100">
+                        <!-- Image, copy, desc -->
+                        <div class="w100 image-copy">
+                            <div class="flex-vertical article-title-container">
+                                <h1>{{ article['title'] }}</h1>
+                                <div>
+                                    <form class="mobile-save-article-form" method="post">
+                                        <button class="submit-article-form" type="submit" name="savedArticle" value="{{ True if article['isSaved'] else False }}">
+                                            <img class="save-article" src="../static/svgs/article/saved-article.svg" />
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <img src="{{ article['image'] }}" class="w100" />
+                            <div class="save-article-container">
+                                {% if article['creditsText'] %}
+                                    <p class="copy">Image &copy
+                                        <a href="{{ article['sourceUrl'] }}">{{ article['creditsText'] }}</a>
+                                    </p>
+                                {% endif %}
+                                {% if article['isSaved'] == True %}
+                                    <form class="save-article-form" method="post">
+                                        <button class="submit-article-form" type="submit" name="savedArticle" value="True">
+                                            <img class="save-article" src="../static/svgs/article/saved-article.svg" />
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <form class="save-article-form" method="post">
+                                        <button class="submit-article-form" type="submit" name="savedArticle" value="False">
+                                            <img class="save-article" src="../static/svgs/article/save-article.svg" />
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                            <div class="description-container">
+                                <hr />
+                                <div class="description">
+                                    <h1>Description</h1>
+                                    <p>{{ article['summary']|safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Characteristics -->
+                        <div class="characteristics">
+                            <h1>{{ article['title'] }}</h1>
+                            <div class="flex-vertical desk-flex-row primary-info">
+                                <div class="stamp" style="background-color: rgb(224, 64, 64) !important">
+                                    <img src="../static/svgs/article/like.svg" />
+                                </div>
+                                <div>
+                                    {% if article['aggregateLikes'] == 1 %}
+                                        <p>{{ article['aggregateLikes'] }} like</p>
+                                    {% else %}
+                                        <p>{{ article['aggregateLikes'] }} likes</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="flex-vertical desk-flex-row primary-info">
+                                <div class="stamp" style="background-color: rgb(224, 64, 224) !important">
+                                    <img src="../static/svgs/article/health-score.svg" />
+                                </div>
+                                <div>
+                                    <p>Health score: {{ '%.0f'|format(article['healthScore']) }}%</p>
+                                </div>
+                            </div>
+                            <div class="flex-vertical desk-flex-row primary-info">
+                                <div class="stamp" style="background-color: rgb(64, 224, 64) !important">
+                                    <img src="../static/svgs/article/ready-in.svg" />
+                                </div>
+                                <div>
+                                    <p>Ready in: {{ article['readyInMinutes'] }}'</p>
+                                </div>
+                            </div>
+                            <div class="flex-vertical desk-flex-row primary-info">
+                                <div class="stamp" style="background-color: rgb(232, 232, 72) !important">
+                                    <img src="../static/svgs/article/price.svg" />
+                                </div>
+                                <div>
+                                    <p>Price per serving: ${{ '%.2f'|format(article['pricePerServing'] / 100) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-vertical desk-flex-row step-and-wine">
+                {% if article['analyzedInstructions'] %}
+                    <!-- Step-By-Step -->
+                    <div class="step">
+                        <h1>Step-By-Step</h1>
+                        {% for i in article['analyzedInstructions'] %} 
+                            {% for step in i['steps'] %}
+                            <div class="flex-vertical flex-row w100 step-by-step-container">
+                                <div class="flex-vertical step-number-container">
+                                    <div class="step-number">
+                                        <h3>{{ step['number'] }}</h3>
+                                        <div class="step-progress"></div>
+                                    </div>
+                                </div>
+                                <div class="flex-vertical step-description-container">
+                                    <p>{{ step['step'] }}</p>
+                                </div>
+                            </div>
+                            {% endfor %} 
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if article['winePairing']['productMatches'] and article['winePairing']['pairingText'] %}
+                    <!-- Wine -->
+                    <div class="bgc-wine description">
+                        {% for i in article['winePairing']['productMatches'] %}
+                            <div class="flex-vertical">
+                                <h1>{{ i['title'] }}</h1>
+                                <img src="{{ i['imageUrl'] }}" />
+                                <div class="flex-vertical flex-row w100 buy-container">
+                                    <div class="btn btn-price">
+                                        <h2>${{ i['price'] }}</h2>
+                                    </div>
+                                    <div>
+                                        <h2>|</h2>
+                                    </div>
+                                    <a href="{{ i['link'] }}" class="btn btn-wine">
+                                        <div>Buy Now</div>
+                                    </a>
+                                </div>
+                                <p>{{ i['description'] }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <h1>Error 400.</h1>
+        <h3>{{ article['message'] }}</h3>
+    {% endif %} 
+{% endblock %}

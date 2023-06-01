@@ -1,0 +1,117 @@
+.join-container {
+    display: flex;
+    width: 60vw;
+    justify-content: center;
+}
+
+.join-container > a:first-of-type {
+    margin-right: 1.6rem;
+}
+
+.web-presentation {
+    width: 100%;
+    height: calc(100vh - 13rem);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(../hero-image.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right bottom;
+    margin-bottom: 4.8rem;
+}
+
+.introduction-container {
+    color: white;
+    height: 50%;
+    justify-content: end !important;
+}
+
+.go-down-container {
+    height: 50%;
+}
+
+.go-down-container > img {
+    width: 4rem;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-container img {
+    width: 4rem;
+}
+
+.card-banner {
+    width: 100%;
+    height: 20%;
+    position: relative;
+    margin-bottom: 2.4rem;
+}
+
+.ingredients-bg {
+    background-color: rgb(200, 114, 61);
+}
+
+.recipes-bg {
+    background-color: rgb(238, 77, 77);
+}
+
+.products-bg {
+    background-color: rgb(238, 120, 77);
+}
+
+.menu-items-bg {
+    background-color: rgb(200, 213, 61);
+}
+
+.icon-circle {
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+    background-color: black;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: calc(0% - 3.2rem);
+    right: calc(50% - 3.2rem);
+}
+
+.marg-top-0 {
+    margin-top: 0;
+}
+    
+@media (max-width: 1024px) and (orientation: landscape) and (min-aspect-ratio: 13/9) {
+    .web-presentation {
+        height: calc(100vh - 10rem);
+    }
+
+    .cards-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}
+
+@media (min-width: 1024px) and (min-aspect-ratio: 13/9) {
+    .web-presentation {
+        height: calc(80vh - 13rem);
+    }
+
+    .introduction-container > p {
+        font-size: 1.2rem;
+        margin-bottom: 2.4rem;
+    }
+
+    .cards-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .cards-container > .card > table > tbody > tr > td {
+        padding: 0.8rem 0rem;
+    }
+}

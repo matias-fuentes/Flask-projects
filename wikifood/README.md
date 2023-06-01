@@ -1,4 +1,5 @@
-# WikiFood
+[WikiFood](https://cs50.harvard.edu/college/2020/fall/project/#final-project)
+==================================================================================
 
 Video Presentation: https://www.youtube.com/watch?v=gO3a_suqdls
 
@@ -15,9 +16,6 @@ This page works with a free API called Spoonacular. This is where I've collected
 But hey! There's much more! You can even create your account, personalize it at your own choice, see if some wine could go well with some recipe, and even more; save your favourite articles!
 
 ### So, what are you waiting for? Come to WikiFood! And be part of the kitchen.
-
-[Final Project](https://cs50.harvard.edu/college/2020/fall/project/#final-project)
-==================================================================================
 
 Like to see some of [last year's final projects](https://cs50.harvard.edu/college/2020/fall/#gallery-of-final-projects)?
 

@@ -1,0 +1,123 @@
+{% extends "template.html" %}
+
+{% block profile %}
+    <form class="profile-form" method="post" enctype="multipart/form-data">
+        <div class="banner">
+            {% if profileInfo['bannerPic'] %}
+                <img
+                    class="w100"
+                    src="https://firebasestorage.googleapis.com/v0/b/wikifood-24aa8.appspot.com/o/{{ profileInfo['bannerPic'] }}?alt=media&token=https://oauth2.googleapis.com/token"
+                />
+            {% endif %}
+            <label for="upload-bann-pic" class="btn btn-primary btn-chng-bann flex-vertical">
+                <img class="banner-pic" src="../static/svgs/profile/upload-photo.svg" />
+                <p class="p-chng-bann">Change banner photo</p>
+            </label>
+            <input
+                id="upload-bann-pic"
+                class="any-ds-none"
+                name="bannerPic"
+                type="file"
+                accept=".png, .jpg, .jpeg, .webp, .bmp"
+            />
+
+            {% if profileInfo['profilePic'] %}
+                <div class="profile-pic-container">
+                    <img
+                        class="profile-pic-container profile-pic-circle"
+                        src="https://firebasestorage.googleapis.com/v0/b/wikifood-24aa8.appspot.com/o/{{ profileInfo['profilePic'] }}?alt=media&token=https://oauth2.googleapis.com/token"
+                    />
+                    <label for="upload-prof-pic" class="upload-prof-pic">
+                        <img class="upload-prof-pic-img" src="../static/svgs/profile/upload-photo.svg" />
+                    </label>
+                    <input
+                        id="upload-prof-pic"
+                        class="any-ds-none"
+                        name="profilePic"
+                        type="file"
+                        accept=".png, .jpg, .jpeg, .webp, .bmp"
+                    />
+                </div>
+            {% else %}
+                <div class="profile-pic-container">
+                    <div class="profile-pic-container-rel">
+                        <img class="profile-pic" src="../static/svgs/profile/profile-borderless.svg" />
+                        <label for="upload-prof-pic" class="upload-prof-pic">
+                            <img class="upload-prof-pic-img" src="../static/svgs/profile/upload-photo.svg" />
+                        </label>
+                        <input
+                            id="upload-prof-pic"
+                            class="any-ds-none"
+                            name="profilePic"
+                            type="file"
+                            accept=".png, .jpg, .jpeg, .webp, .bmp"
+                        />
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="banner__username">
+            <h1 class="no-mrg">{{ profileInfo['username'] }}</h1>
+        </div>
+
+        {% if successfulMessage %}
+            <div class="successfulMessage__container">
+                <div class="successfulMessage">
+                    <h3>{{ successfulMessage }}</h3>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="saved-articles__header">
+            <button class="saved-articles__deleteBtn">
+                <img class="saved-articles__deleteBtn--icon" src="../static/svgs/profile/delete.svg" />
+            </button>
+            <h1>Saved Articles</h1>
+        </div>
+
+        <table class="mrg-16">
+            <thead>
+                <tr>
+                    <th class="saved-articles__selectAll">
+                        <input id="select-all" type="checkbox" />
+                    </th>
+                    <th class="saved-articles__bigContainer">
+                        <h2>Image</h2>
+                    </th>
+                    <th class="saved-articles__bigContainer">
+                        <h2>Recipe</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in profileInfo['savedArticles'] %}
+                    <tr>
+                        <td>
+                            <input class="saved-articles__checkbox" type="checkbox" name="articles" value="{{ article['id'] }}" />
+                        </td>
+                        <td>
+                            <a
+                                
+                            href="/articles/{{ article['title'].lower().replace(' ', '-') }}-{{ article['id'] }}"
+                        >
+                            <img class="saved-articles__image" src="{{ article['image'] }}" />
+                        </a>
+                        </td>
+                        <td>
+                            <a href="/articles/{{ article['title'].lower().replace(' ', '-') }}-{{ article['id'] }}">
+                                <h2>{{ article['title'] }}</h2>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="save-flx-end">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+        </div>
+    </form>
+
+    <script src="../static/select-all.js"></script>
+{% endblock %}

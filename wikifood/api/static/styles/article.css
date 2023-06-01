@@ -1,0 +1,334 @@
+.stamp-container {
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.stamp-container > div {
+    margin: 0 0.8rem;
+    width: 5.6rem;
+}
+
+.stamp-container > p {
+    margin: 0;
+}
+
+.stamp {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(235, 105, 59);
+    border-radius: 50%;
+}
+
+.article-title-container {
+    margin: 1.6rem auto;
+    flex-direction: row;
+    display: flex;
+}
+
+.article-title-container > div {
+    margin-left: 1.2rem;
+}
+
+.mobile-save-article-form {
+    border-left: 1px solid black;
+    display: flex;
+}
+
+.mobile-save-article-form > button {
+    padding: 0rem 1.6rem;
+}
+
+.save-article-form {
+    display: none;
+}
+
+.save-article {
+    width: 2.4rem;
+}
+
+.image-copy {
+    padding: 0 !important;
+    width: 100%;
+}
+
+.image-copy > * {
+    margin-bottom: 1.6rem;
+}
+
+.image-copy > img {
+    object-fit: contain;
+    max-height: 50vh;
+}
+
+.characteristics {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 3.2rem 1.2rem;
+}
+
+.characteristics > h1 {
+    display: none;
+}
+
+.characteristics > div {
+    height: 100%;
+}
+
+.description {
+    padding: 1.2rem;
+    border-radius: 5px;
+    background-color: rgba(0, 132, 60, .25);
+}
+
+.description-container > * {
+    margin-bottom: 2.4rem;
+}
+
+.description > p {
+    text-align: left;
+}
+
+.bgc-wine {
+    background-color: rgba(86, 7, 64, .25) !important;
+    color: rgb(86, 7, 12);
+}
+
+.btn-price {
+    color: rgb(86, 7, 12);
+    border: 1px solid rgb(86, 7, 12);
+    background-color: transparent;
+}
+
+.btn-price > h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.btn-wine {
+    background-color: rgb(86, 7, 12);
+}
+
+.btn-wine > div {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.buy-container {
+    margin: 0.8rem 0;
+}
+
+.buy-container > div:last-of-type {
+    width: 3.2rem;
+}
+
+.buy-container > * {
+    width: 9.6rem;
+}
+
+.step {
+    background-color: rgba(235, 105, 59, .25);
+    border-radius: 5px;
+}
+
+.step-by-step-container:nth-of-type(odd) {
+    background-color: rgba(235, 105, 59, .5);
+}
+
+.step-number-container {
+    align-items: flex-start;
+    width: 15%;
+    padding: 1.6rem;
+}
+
+.step-number {
+    padding: 0.6rem;
+    color: white;
+    border-radius: 50%;
+    font-weight: 400;
+    width: 2.5rem;
+    background-color: rgba(235, 105, 59);
+}
+
+.step-number > h3 {
+    margin: 0;
+}
+
+.step-description-container {
+    text-align: start;
+    align-items: start;
+    width: 85%;
+}
+
+.title {
+    justify-content: space-around;
+}
+
+.step-and-wine > * {
+    margin-bottom: 3.2rem;
+}
+
+.copy {
+    display: flex;
+    justify-content: flex-end;
+    margin: auto 0;
+}
+
+.copy > a {
+    margin-left: 0.4rem;
+}
+
+.ingredients {
+    background-color: rgba(235, 105, 59, .25) !important;
+}
+
+.badges {
+    display: none;
+}
+
+.submit-article-form {
+    border: none;
+    background: none;
+}
+
+@media (min-width: 1024px) and (min-aspect-ratio: 13/9) {
+    .btn-price:hover {
+        background: none !important;
+        cursor: text;
+    }
+
+    .btn-wine:hover {
+        background-color: rgb(57, 5, 8);
+    }
+
+    .article {
+        margin: 3.2rem 12.8rem;
+    }
+
+    .stamp-container {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .stamp-container > div {
+        width: 16.66%;
+    }
+
+    .stamp > img {
+        width: 2.4rem;
+    }
+
+    .general-info {
+        margin-bottom: 3.2rem;
+        background-color: rgb(230, 230, 228);
+        border-radius: 5px;
+        padding: 3.2rem;
+    }
+
+    .general-info > * {
+        margin-bottom: 2.4rem;
+        padding: 1.6rem;
+    }
+
+    .sub-general-info {
+        display: flex;
+    }
+
+    .image-copy {
+        max-width: 40vw;
+    }
+
+    .image-copy > h1 {
+        display: none;
+    }
+
+    .copy > a {
+        margin-left: 0.4rem;
+    }
+
+    .desk-flex-row {
+        flex-direction: row;
+    }
+
+    .characteristics {
+        flex-direction: column;
+        height: 40%;
+        flex-wrap: unset;
+        padding: 1.6rem;
+        margin: 0;
+    }
+
+    .characteristics > h1 {
+        display: block;
+    }
+
+    .primary-info {
+        justify-content: flex-start;
+        font-size: 1.2rem;
+    }
+
+    .primary-info > * {
+        margin: 1.6rem;
+    }
+
+    .description {
+        padding: 1.6rem 2.4rem;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .step-and-wine > * {
+        width: 50%;
+        height: auto;
+        margin: 0 6.4rem;
+        border-radius: 5px;
+        box-shadow: 4px 4px 8px rgba(0 0 0 / 25%);
+    }
+
+    .side-bar-info {
+        border-left: 1px solid rgba(0, 0, 0, .25);
+        margin-left: 3.2rem;
+    }
+
+    .badges {
+        display: block;
+    }
+
+    .badges > div {
+        width: 9.6rem;
+    }
+
+    .article-title-container {
+        display: none;
+    }
+
+    .mobile-save-article-form {
+        display: none;
+    }
+
+    .save-article-form {
+        display: flex;
+    }
+
+    .save-article-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .save-article {
+        width: 3.2rem;
+        margin: 0 3.2rem;
+    }
+
+    .save-article:hover {
+        cursor: pointer;
+    }
+}

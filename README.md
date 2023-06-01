@@ -4,9 +4,9 @@
 
 - Fineer: https://fineer.herokuapp.com/register
 
-- WikiFood: https://cs50-wikifood.herokuapp.com/
+- WikiFood: https://cs50-wikifood.vercel.app/
 
-- Birthie: https://birthie.herokuapp.com/
+- Birthie: https://birthie.vercel.app/
 
 ## Repositories
 

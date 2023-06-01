@@ -1,0 +1,20 @@
+{% extends "template.html" %} {% block login %}
+<form method="post" class="flex-vertical form">
+    <h1>Log In</h1>
+    {% if errorMessage %}
+    <div class="error-container">
+        <p class="error">{{ errorMessage }}</p>
+    </div>
+    {% endif %}
+    <div class="label">
+        <label>Email or Username*</label>
+    </div>
+    <input name="user" type="text" minlength="3" maxlength="64" />
+    <div class="label">
+        <label>Password*</label>
+    </div>
+    <input name="password" type="password" minlength="6" maxlength="16" />
+    <p>Don't have an account yet? <a href="/signup">Sign Up here.</a></p>
+    <button type="submit" class="btn btn-primary">Log In</button>
+</form>
+{% endblock %}

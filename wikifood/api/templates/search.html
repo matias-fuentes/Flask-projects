@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+
+{% block search %}
+    <div class="search-container">
+        {% if response %}
+            {% for i in response['results'] %}
+                {% if i['image'] and i['title'] and i['summary'] %}
+                    <div onclick="location.assign(`/articles/{{i.title.lower().replace(' ', '-')}}-{{i['id']}}`)" class="card search-card">
+                        <img src="{{ i['image'] }}">
+                        <h3 class="search-card__title">{{ i['title'] }}</h3>
+                        <p>{{ i['summary'] }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% if emptyState %}
+            <h3>Error! You must search something! Try typing "pizza" on the search bar!</h3>
+        {% endif %}
+    </div>
+{% endblock %}

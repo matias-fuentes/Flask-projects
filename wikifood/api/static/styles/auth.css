@@ -1,0 +1,30 @@
+.form {
+    width: 90%;
+    margin: auto;
+}
+
+.form > * {
+    margin-bottom: 2.4rem;
+}
+
+.error-container {
+    background-color: rgb(243, 216, 218);
+    padding: 0.8rem 1.6rem;
+}
+
+.error {
+    color: rgb(125, 61, 62);
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    .form {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1024px) and (min-aspect-ratio: 13/9) {
+    .form > h1 {
+        margin-top: 6.4rem;
+    }
+}
