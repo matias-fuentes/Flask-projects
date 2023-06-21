@@ -1,13 +1,18 @@
-[Lab 9: Birthdays](https://cs50.harvard.edu/college/2020/fall/labs/9/#lab-9-birthdays)
-======================================================================================
-
-You are welcome to collaborate with one or two classmates on this lab, though it is expected that every student in any such group contribute equally to the lab.
+# [Lab 9: Birthdays](https://cs50.harvard.edu/college/2020/fall/labs/9/#lab-9-birthdays)
 
 Create a web application to keep track of friends' birthdays.
 
-![screenshot of birthdays website](https://cs50.harvard.edu/college/2020/fall/labs/9/birthdays.png)
+WEBPAGE: https://birthie.vercel.app
+
+## Description
+
+Never miss a loved one's birthday again with Birthie, the website designed to help you stay organized. Birthie allows you to effortlessly add and manage birthdays of your friends and family members. Celebrate special occasions with heartfelt wishes. Birthie ensures that you can show your loved ones how much you care by never forgetting their important milestones.
+
+![Birthie preview](https://cs50.harvard.edu/college/2020/fall/labs/9/birthdays.png)
 
 ## Getting Started
+
+You are welcome to collaborate with one or two classmates on this lab, though it is expected that every student in any such group contribute equally to the lab.
 
 Here's how to download this lab into your own CS50 IDE. Log into [CS50 IDE](https://ide.cs50.io/) and then, in a terminal window, execute each of the below.
 

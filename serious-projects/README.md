@@ -2,12 +2,12 @@
 
 ## URLs
 
-- Fineer: https://fineer.herokuapp.com/register
+-   Fineer: https://fineer.vercel.app/register
 
-- WikiFood: https://cs50-wikifood.vercel.app/
+-   WikiFood: https://cs50-wikifood.vercel.app/
 
 ## Repositories
 
-- Fineer: https://github.com/matias-fuentes/Fineer
+-   Fineer: https://github.com/matias-fuentes/Fineer
 
-- WikiFood: https://github.com/matias-fuentes/WikiFood
+-   WikiFood: https://github.com/matias-fuentes/WikiFood
