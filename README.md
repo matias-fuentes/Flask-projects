@@ -1,4 +1,4 @@
-# More elaborated published projects
+# Published projects using Flask
 
 ## URLs
 
